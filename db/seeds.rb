@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'random_data'
+50.times do
+# #1
+  Wiki.create!(
+# #2
+    title:  RandomData.random_sentence,
+    body:   RandomData.random_paragraph
+  )
+end
+wiki = Wiki.all
+
+
+puts "Seed finished"
+puts "#{Wiki.count} wikis created"
