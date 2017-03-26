@@ -1,19 +1,15 @@
 class User < ActiveRecord::Base
       has_many :wikis
-      has_many :wikis, dependent: :destroy
-      before_save { self.email = email.downcase if email.present? }
-      before_save { self.role ||= :member }
+      has_many :collaborators
+      has_many :shared_wikis, through: :collaborators
 
-      validates :name, length: { minimum: 1, maximum: 100 }, presence: true
+      after_initialize :set_default_role
 
-      validates :password, presence: true, length: { minimum: 6 }, if: "password_digest.nil?"
-      validates :password, length: { minimum: 6 }, allow_blank: true
+      devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+         enum role: [:standard, :premium, :admin]
 
-      validates :email,
-           presence: true,
-           uniqueness: { case_sensitive: false },
-           length: { minimum: 3, maximum: 254 }
-           has_secure_password
-           enum role: [:member, :admin]
-
-     end
+         def set_default_role
+               self.role ||= 'standard'
+         end
+   end

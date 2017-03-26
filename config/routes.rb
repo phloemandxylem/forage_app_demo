@@ -3,6 +3,7 @@ Rails.application.routes.draw do
       resources :users, only: [:new, :create]
       resources :new_user_session
       resources :new_user_registration
+      resources :topics
 
 
   devise_for :users

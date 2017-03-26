@@ -16,15 +16,8 @@ require 'random_data'
 end
 wiki = Wiki.all
 
-admin = User.create!(
-   name:     'Admin User',
-   email:      'admin@example.com',
-   password: 'helloworld',
-   role:          'admin'
- )
-
- member = User.create!(
-   name:     'Member User',
+ current_user = User.create! (
+   name:   'User',
    email:    'member@example.com',
    password: 'helloworld'
  )
