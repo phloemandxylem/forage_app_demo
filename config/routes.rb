@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
       resources :wikis
+      resources :users, only: [:new, :create]
+      resources :new_user_session
+      resources :new_user_registration
+
 
   devise_for :users
       get 'about' => 'welcome#about'

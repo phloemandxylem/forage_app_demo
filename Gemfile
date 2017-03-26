@@ -8,6 +8,8 @@ source 'https://rubygems.org'
    gem 'rails_12factor'
  end
 
+ 
+
  group :development do
    gem 'sqlite3'
  end
@@ -20,6 +22,7 @@ source 'https://rubygems.org'
  gem 'bootstrap'
  gem 'figaro'
  gem 'devise'
+ gem 'pundit'
 
  group :development, :test do
    gem 'byebug'
