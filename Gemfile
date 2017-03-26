@@ -8,7 +8,7 @@ source 'https://rubygems.org'
    gem 'rails_12factor'
  end
 
- 
+
 
  group :development do
    gem 'sqlite3'
@@ -23,6 +23,9 @@ source 'https://rubygems.org'
  gem 'figaro'
  gem 'devise'
  gem 'pundit'
+ gem 'stripe'
+ gem 'redcarpet'
+ gem 'haml'
 
  group :development, :test do
    gem 'byebug'

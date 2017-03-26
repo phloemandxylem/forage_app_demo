@@ -16,7 +16,7 @@
           -display_collaborators(@wiki).each do |user|
             %li= user
       .down-right
-        = link_to "Back to Wikis", user_wikis_path(current_user), class: 'button success radius'
+        = link_to "Wikis", user_wikis_path(current_user), class: 'button success radius'
         %a.button.dropdown.secondary.radius{"data-dropdown" => "drop1", :href => "#"} Edit Wiki
         %br
         %ul{ id: 'drop1', class: 'f-dropdown' }
