@@ -25,7 +25,7 @@ source 'https://rubygems.org'
  gem 'pundit'
  gem 'stripe'
  gem 'redcarpet'
- gem 'haml'
+ gem 'haml-rails'
 
  group :development, :test do
    gem 'byebug'
