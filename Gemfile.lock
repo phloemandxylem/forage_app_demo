@@ -232,14 +232,16 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
-  haml-rails
+  haml
+  haml-rails (~> 0.9)
+  html2haml
   jquery-rails
   pg
   pry-rails
   pundit
   rails (= 4.2.5)
   rails_12factor
-  redcarpet
+  redcarpet (~> 3.3, >= 3.3.3)
   rspec-rails
   sass-rails (~> 5.0)
   shoulda

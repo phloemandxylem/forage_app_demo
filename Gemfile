@@ -24,8 +24,10 @@ source 'https://rubygems.org'
  gem 'devise'
  gem 'pundit'
  gem 'stripe'
- gem 'redcarpet'
- gem 'haml-rails'
+gem 'redcarpet', '~> 3.3', '>= 3.3.3'
+ gem 'haml'
+gem  'haml-rails', '~> 0.9'
+gem  'html2haml'
 
  group :development, :test do
    gem 'byebug'
