@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root 'wikis#index', as: :authenticated
-  end
+  root 'wikis#index', as: :authenticated
+end
 
   root to: 'welcome#index'
 

@@ -1,6 +1,10 @@
 // Place all the styles related to the Wikis controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h1 {
-   color: green;
- }
+.down-right {
+  margin-top: 20px;
+
+}
+ul, ol {
+  list-style-position: inside;
+}

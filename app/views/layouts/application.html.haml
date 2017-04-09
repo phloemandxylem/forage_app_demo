@@ -1,24 +1,17 @@
 !!! 5
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-
 %html{:lang => "en"} <!--<![endif]-->
 %head
   %meta{:charset => "utf-8"}
   %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
 
-  %title= content_for?(:title) ? yield(:title) : "Blocipedia"
+  %title= content_for?(:title) ? yield(:title) : "Botanopedia"
   = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js"
   = stylesheet_link_tag    "application"
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tags
 
 
-%body
+%body.specialbg
   = render 'layouts/topbar'
 
   .row
