@@ -40,8 +40,8 @@ class WikiPolicy < ApplicationPolicy
           if !wiki.private || wiki.user == user || wiki.users.include?(user)
             wikis << wiki
           end
-        end
-      end
+         end
+       end
       wikis
     end
   end

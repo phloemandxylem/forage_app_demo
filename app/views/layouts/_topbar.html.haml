@@ -6,7 +6,7 @@
 
   %section.top-bar-section
     %ul.left
-      %li= link_to "Blocipedia", root_path, class: "generic-button"
+      %li= link_to "Botanopedia", root_path, class: "generic-button"
       %li.divider
       %li= link_to "About", about_path, class: "generic-button"
       %li.divider
@@ -21,5 +21,5 @@
         %li= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'generic-button'
       - else
         %li= link_to 'Sign Up', new_user_registration_path, class: 'generic-button'
-        %br
+        %li.divider
         %li= link_to 'Sign In', new_user_session_path, class: 'generic-button'

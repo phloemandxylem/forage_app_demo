@@ -5,17 +5,27 @@
 a{
 color: green;
 font-weight: bold;
-font-family: sans-serif;
+font-family: monospace;
 font-size: 24px;
+}
+
+p{
+color: green;
+}
+
+h2{
+  font-family: monospace;      
 }
 
 li{
   display: inline;
   font-size: 24px;
+  font-family: monospace;
+  color: green;
  }
 
 .specialbg{
- font-family: sans-serif;
+ font-family: monospace;
  background-image: url(http://www.booooooom.com/wp-content/uploads/2016/07/crystal-liu22.jpg);
  background-repeat: no-repeat;
  background-position: center;

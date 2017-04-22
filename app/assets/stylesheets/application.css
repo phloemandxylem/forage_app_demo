@@ -13,11 +13,27 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
-.user-info {
-margin-top: 9px;
+ .no-action {
+   pointer-events: none;
+   color: #fff;
+   padding: 8px;
+   background-color: #000;
+ }
+
+ .new_formatting{
+       padding-right: 10px, 10px; 
+ }
+
+ .new {
+   margin: 20px;
 }
 
-.nav {
-margin-top: 5px;
-}
+ .private {
+   font-size: 15px;
+   position: relative;
+   color: rgb(255, 0, 0);
+ }
+
+ textarea{
+   height: 15em;
+ }

@@ -29,11 +29,11 @@ var convertMarkdown = function(source, target) {
   $(target).html(marked(html));
 };
 
-$(document).ready(function(){
-  $('#wiki_title').keyup(function(){
-    convertMarkdown($(this), '#markdown_title')
-  });
-  $('#wiki_body').keyup(function(){
-    convertMarkdown($(this), '#markdown_body')
-  });
-});
+      $(document).ready(function(){
+      $('#wiki_title').keyup(function(){
+      convertMarkdown($(this), '#markdown_title')
+      });
+      $('#wiki_body').keyup(function(){
+      convertMarkdown($(this), '#markdown_body')
+      });
+      });
