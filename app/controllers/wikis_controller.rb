@@ -8,6 +8,7 @@ class WikisController < ApplicationController
 
   def show
       @wiki = Wiki.find(params[:id])
+      @users = User.where.not(id: current_user.id)
   end
 
   def edit

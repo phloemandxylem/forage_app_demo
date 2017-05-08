@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   get '/about' => 'welcome#about'
   devise_for :users
-  resources :users, only: [] do
-  resources :wikis
+  resources :users, only: [ ] do
+      resources :wikis
   end
+
+  resources :collaborators, only: [:create, :destroy]
 
   authenticated :user do
   root 'wikis#index', as: :authenticated

@@ -13,7 +13,8 @@
 
 %body.specialbg
   = render 'layouts/topbar'
+  = display_flash_messages
 
-  .row
-    = yield
-    = javascript_include_tag "application"
+  .row.showing
+  = yield
+  = javascript_include_tag "application"

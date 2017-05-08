@@ -23,11 +23,6 @@ ActiveRecord::Schema.define(version: 20170326163535) do
   add_index "collaborators", ["user_id"], name: "index_collaborators_on_user_id"
   add_index "collaborators", ["wiki_id"], name: "index_collaborators_on_wiki_id"
 
-  create_table "topics", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

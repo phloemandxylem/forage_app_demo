@@ -2,28 +2,40 @@
   -if display_wiki_content?(@wiki)
     .large-8.columns
 
-      %h1= @wiki.title
+      %h1= @wiki.title :
       :markdown
         #{markdown(@wiki.body)}
 
     .large-4.columns
       %h2 Creator:
       %p= @wiki.user.email
-      -if @wiki.private && @wiki.collaborators != []
+      -if @wiki.private && @wiki.collaborators.any?
         %h2
           Collaborators:
         %ul
           -display_collaborators(@wiki).each do |user|
             %li= user
-      .down-right
-        = link_to "Wikis", user_wikis_path(current_user), class: 'button success radius'
-        %a.button.dropdown.secondary.radius{"data-dropdown" => "drop1", :href => "#"} Edit Wiki
-        %br
-        %ul{ id: 'drop1', class: 'f-dropdown' }
-          %li= link_to "Edit wiki content", edit_user_wiki_path(current_user, @wiki)
-          %li= link_to "Delete wiki", [current_user, @wiki], method: :delete, data: {confirm: 'Are you sure you want to delete this wiki?'}
+
+    .down-right
+      = link_to "Wikis", user_wikis_path(current_user), class: 'button success radius'
+      %a.button.dropdown.secondary.radius{"data-dropdown" => "drop1", :href => "#"} Edit Wiki
+      %br
+      %ul{ id: 'drop1', class: 'f-dropdown' }
+        %li= link_to "Edit wiki content", edit_user_wiki_path(current_user, @wiki)
+        %li= link_to "Delete wiki", [current_user, @wiki], method: :delete, data: {confirm: 'Are you sure you want to delete this wiki?'}
   -else
     .large-8.columns
       %h1 This is a private wiki.
     .large-4.columns.down-right
-      = link_to "Back to Wikis", user_wikis_path(current_user), class: 'button success radius'
+     = link_to "Back to Wikis", user_wikis_path(current_user), class: 'button success radius'
+
+.row
+  .large-12-columns
+    %h3 Manage Collaborators
+      =  @users.each do |users|
+    %div
+      = user.email
+        - if @wiki.users.include?(user)
+          = link_to 'Remove collaborator', collaborator_path(wiki_id: @wiki.id, user_id: user.id) , method: :delete, class: 'button alert'
+        - else
+          = link_to 'Add collaborator', collaborators_path(wiki_id: @wiki.id, user_id: user.id) , method: :post, class: 'button button-default'
