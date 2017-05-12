@@ -2,9 +2,8 @@
   -if display_wiki_content?(@wiki)
     .large-8.columns
 
-      %h1= @wiki.title :
-      :markdown
-        #{markdown(@wiki.body)}
+      %h1= @wiki.title
+      %p= markdown(@wiki.body)
 
     .large-4.columns
       %h2 Creator:
@@ -27,14 +26,14 @@
     .large-8.columns
       %h1 This is a private wiki.
     .large-4.columns.down-right
-     = link_to "Back to Wikis", user_wikis_path(current_user), class: 'button success radius'
+      = link_to "Back to Wikis", user_wikis_path(current_user), class: 'button success radius'
 
 .row
   .large-12-columns
     %h3 Manage Collaborators
-      =  @users.each do |users|
-    %div
-      = user.email
+    -@users.each do |user|
+      %div
+        = user.email
         - if @wiki.users.include?(user)
           = link_to 'Remove collaborator', collaborator_path(wiki_id: @wiki.id, user_id: user.id) , method: :delete, class: 'button alert'
         - else
