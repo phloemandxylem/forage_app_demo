@@ -14,43 +14,29 @@
  *= require_self
  */
 
-h1{
- font-family: monospace;
-}
-
-h2{
-  font-family: monospace;
-}
-
-p{
- font-family: monospace;
-}
-
-
 form {
-  margin-bottom: inherit;
-  position:static;
-  width: 250px;
+  padding-left: 40%;
+  width: 700px;
   height: 250px;
-  font-family: monospace, Geneva, sans-serif;
-  font-size: 14px;
-  font-style: italic;
-  line-height: 10px;
+  font-family: arial, serif, sans-serif;
+  line-height: 20px;
   font-weight: bold;
-  color: #09C;
-  text-decoration: none;
-
+  color: black;
 }
 
-body.specialbg{
- background-image: url(https://a.1stdibscdn.com/archivesE/upload/a_60/45_14/tfindreams/TFindreams_l.jpeg);
+h1, h2, h3, h4, h5{
+padding-left: 40%;
+}
+
+.specialbg{
+ background-image: url(http://iamjustawoman.com/wp-content/uploads/2014/02/BackgroundImageForDemo.jpg);
  background-repeat: no-repeat;
  background-position: top;
  background-size: cover;
  }
 
  .private {
-   font-family: monospace;
+   padding-left: 60%
+   font-family: arial;
    font-size: 15px;
    padding: 10px
-   color: green;

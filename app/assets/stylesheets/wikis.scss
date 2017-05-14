@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1{
-   font-family: monospace;
+h1, h2{
+   font-family: arial, Geneva;
+}
+
+
+.button-spacing{
+padding-right: 75%;
+padding-left: 0%;
+}
+
+.down-right{
+padding-left: 68%
 }

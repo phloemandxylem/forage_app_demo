@@ -2,26 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-a{
-color: green;
+a, li,{
 font-weight: bold;
-font-family: monospace;
-font-size: 24px;
+font-family: arial, serif, sans-serif;
+font-size: 20px;
 }
 
-h2{
-  font-family: monospace;
+.no-action{
+font-weight: bold;
+font-family: arial, serif, sans-serif;
+font-size: 20px;
+
 }
-
-li{
-  display: inline;
-  font-size: 24px;
-  font-family: monospace;
-  color: green;
- }
-
 .specialbg{
- background-image: url(https://a.1stdibscdn.com/archivesE/upload/a_60/45_14/tfindreams/TFindreams_l.jpeg);
+ background-image: url(http://iamjustawoman.com/wp-content/uploads/2014/02/BackgroundImageForDemo.jpg);
  background-repeat: no-repeat;
  background-position: top;
  background-size: cover;

@@ -11,9 +11,9 @@
       %li= link_to "About", about_path, class: "generic-button"
       %li.divider
     %ul.right
-      - if user_signed_in?
+      -if user_signed_in?
         %li{class: 'no-action'}
-          Signed in as:
+          "Signed in as"
           %strong #{current_user.email}
         %li.divider
         %li= link_to 'Edit Profile', edit_user_registration_path, class: 'generic-button'
