@@ -1,0 +1,16 @@
+<% if @wiki %>
+<div>
+  <H1><%= @wiki.title %></H1>
+  <p><%= markdown(@wiki.body) %></p>
+  <p><%= "Private:  #{@wiki.private}" %></p>
+
+
+</div>
+<% else %>
+  <p>I couldn't find that wiki in your list.</p>
+<% end %>
+<% if policy(@wiki).edit? %>
+  <%= link_to "Edit Wiki", edit_wiki_path, class: 'btn btn-success' %>
+<% end %>
+<%= link_to "Wiki List", wikis_path, class: 'btn btn-success' %>
+<%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this Wiki?' } %>
