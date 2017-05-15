@@ -1,71 +1,91 @@
 class WikisController < ApplicationController
-  include WikisHelper
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+      before_action :set_record, except: [:index, :new, :create]
+      before_action :authenticate_user!
 
-  def index
-      @wikis = policy_scope(Wiki.all)
-  end
+       def index
+         # if current_user.admin?
+         #   @wikis = Wiki.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+         # elsif current_user.premium?
+         #   #Show all public wikis and owned private wikis
+         #   #@wikis = "Not sure how to define collection"
+         # else
+         #   #current_user.standard?
+         #   #Show only public wikis
+         #   @wikis = Wiki.where(private: false).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+         # end
 
-  def show
-      @wiki = Wiki.find(params[:id])
-      @users = User.where.not(id: current_user.id)
-  end
+         #@wikis = current_user.wikis.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+         #@wikis = Wiki.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+         #@wikiPrivateCount = Wiki.where(private: true).count.to_s
+         @wikis = Wiki.visible_to(current_user).ordered.paginate(:page => params[:page], :per_page => 5)
+         @personalWikiCount = current_user.wikis.count.to_s
+         @PersonalWikiPrivateCount = current_user.wikis.where(private: true).count.to_s
+       end
 
-  def edit
-    @wiki = Wiki.find(params[:id])
-  end
+       def show
+         # Render the show view
+       end
 
-  def update
-    @wiki = Wiki.find(params[:id])
-    authorize @wiki
+       def create
+         @wiki = current_user.wikis.build(wiki_params)
 
-    if @wiki.update_attributes(wiki_params)
-      @wiki.collaborators = Collaborator.update_collaborators(@wiki, params[:wiki][:collaborators]) if collab_authorized?(@wiki)
-      redirect_to [@wiki.user, @wiki], notice: "Wiki updated"
-    else
-      flash[:alert] = "Unable to update wiki. Please try again."
-      render :edit
-    end
-  end
+         if @wiki.save
+           flash[:notice] = "saved"
+           redirect_to wikis_path
+         else
+           flash[:error] = @wiki.errors.full_messages.to_sentence
+           render :new
+         end
+       end
 
-  def destroy
-    @wiki = Wiki.find(params[:id])
-    authorize @wiki
+       def edit
+         # Render the edit view
+         # @ wiki is set in the private set_record method and executed by the before_action:
+         #@wiki = Wiki.find(params[:id])
+         authorize @wiki
+       end
 
-    if @wiki.destroy
-      redirect_to user_wikis_path, notice: "Wiki deleted"
-    else
-      flash[:alert] = "Unable to delete wiki. Try again."
-      render :show
-    end
-  end
+       def update
+         # @item = Item.find(params[:id]) - not necessary because of before_action to set item
+          @wiki.assign_attributes(wiki_params)
+          authorize @wiki
+          if @wiki.save
+            flash[:notice] = "Wiki was updated."
+           redirect_to wikis_path
+          else
+            flash[:error] = @wiki.errors.full_messages.to_sentence
+            render :edit
+          end
+       end
 
-  def new
-    @user = User.find(params[:user_id])
-    @wiki = Wiki.new
-  end
+       def new
+         @wiki = Wiki.new
+       end
 
-  def create
-    @user = User.find(params[:user_id])
-    @wiki = @user.wikis.build(wiki_params)
-    authorize @wiki if @wiki.private == true
-    if @wiki.save
-      redirect_to [@user,@wiki] , notice: "Wiki created"
-    else
-      flash[:alert] = "There was a problem creating the wiki. Please try again."
-      render :new
-    end
-  end
+       def destroy
+          @wiki = Wiki.find(params[:id])
 
-  private
+          if @wiki.destroy
+            flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
+            redirect_to action: :index
+          else
+            flash[:error] = "There was an error deleting the wiki."
+            render :show
+          end
+       end
 
-  def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action"
-    redirect_to(request.referer || root_path)
-  end
+       private
 
-  def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
-  end
+       def set_record
+         @wiki = Wiki.find(params[:id])
+         # begin
+         #   @wiki = current_user.wikis.find(params[:id])
+         # rescue
+         #   @wiki = nil
+         # end
+       end
 
-end
+       def wiki_params
+         params.require(:wiki).permit(:title, :body, :private)
+       end
+     end

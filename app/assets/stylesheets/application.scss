@@ -14,29 +14,33 @@
  *= require_self
  */
 
-form {
-  padding-left: 40%;
-  width: 700px;
-  height: 250px;
-  font-family: arial, serif, sans-serif;
-  line-height: 20px;
-  font-weight: bold;
-  color: black;
+//Import bootstrap-sprockets
+@import "bootstrap-sprockets";
+
+// Import superhero variables.  See http://bootswatch.com/ for details
+@import "bootswatch/spacelab/variables";
+
+// Then bootstrap itself
+@import "bootstrap";
+
+// Bootstrap body padding for fixed navbar
+body { padding-top: 60px; }
+
+// And finally bootswatch style itself
+@import "bootswatch/spacelab/bootswatch";
+
+.action {
+  width: 10%;
 }
 
-h1, h2, h3, h4, h5{
-padding-left: 40%;
+body.thin .content {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.specialbg{
- background-image: url(http://iamjustawoman.com/wp-content/uploads/2014/02/BackgroundImageForDemo.jpg);
- background-repeat: no-repeat;
- background-position: top;
- background-size: cover;
- }
-
- .private {
-   padding-left: 60%
-   font-family: arial;
-   font-size: 15px;
-   padding: 10px
+// body {
+//   \\background-image: image-url('jellyfish.jpg');
+//   background: url('jellyfish.jpg');
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+// }

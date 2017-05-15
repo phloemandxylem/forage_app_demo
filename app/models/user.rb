@@ -1,15 +1,18 @@
 class User < ActiveRecord::Base
-      has_many :wikis
-      has_many :collaborators
-      has_many :shared_wikis, through: :collaborators, source: :wiki
 
-      after_initialize :set_default_role
+  validates :name, length: { minimum: 3 } , presence: true
 
-      devise :database_authenticatable, :registerable,
+  has_many :wikis
+
+  enum role: [:standard, :premium, :admin]
+  after_initialize :set_default_role   #, :if => :new_record
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         enum role: [:standard, :premium, :admin]
 
-         def set_default_role
-               self.role ||= 'standard'
-         end
-   end
+  def set_default_role
+    self.role ||= :standard
+  end
+end
