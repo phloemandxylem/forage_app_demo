@@ -6,7 +6,7 @@ class ChargesController < ApplicationController
          #Add stripe code to refund the amount paid here id desired
          current_user.standard! #Downgrade user to standard
          current_user.wikis.each { |wiki| wiki.update_attribute(:private, false) }
-         flash[:notice] = "Your account was downgraded.  All private Wikis are now public.  Have a nice day!"
+         flash[:notice] = "Your account was downgraded.  All private Wikis are now public."
          redirect_to root_path
 
          #Alternatite ways to do things
@@ -18,7 +18,7 @@ class ChargesController < ApplicationController
         def new
           @stripe_btn_data = {
             key: "#{ Rails.configuration.stripe[:publishable_key] }",
-            description: "BigMoney Membership - #{current_user.name}",
+            description: "Upgraded Membership - #{current_user.name}",
             amount: Amount.default,
           }
         end
@@ -42,7 +42,7 @@ class ChargesController < ApplicationController
           #Update the user role
           current_user.premium!
 
-          flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
+          flash[:notice] = "You're account is now updated, #{current_user.email}!"
           redirect_to edit_user_registration_path # or wherever
 
           # Stripe will send back CardErrors, with friendly messages
