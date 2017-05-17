@@ -35,7 +35,7 @@ class ChargesController < ApplicationController
           charge = Stripe::Charge.create(
             customer: customer.id, # Note -- this is NOT the user_id in your app
             amount: Amount.default,
-            description: "BigMoney Membership - #{current_user.email}",
+            description: " Upgraded Membership - #{current_user.email}",
             currency: 'usd'
           )
 

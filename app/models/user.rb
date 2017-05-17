@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  attr_accessor :name
   validates :name, length: { minimum: 3 } , presence: true
 
   has_many :wikis

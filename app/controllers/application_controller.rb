@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
+      include Pundit
 
       protect_from_forgery with: :exception
-
-        include Pundit
 
         #Handle Pundit when a request is denied
         rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
