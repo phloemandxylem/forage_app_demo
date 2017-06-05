@@ -1,4 +1,4 @@
-# A wiki application built with Ruby on Rails, Haml, and Foundation.
+# A wiki application built with Ruby on Rails, Haml, and Foundation. 
 
 Botanopedia is an application that allows users to create public and private wikis for any topic they desire. All wikis are Markdown-based, public wikis are free to be edited by all users, and private wikis are only able to be updated by designated collaborators. Creation of private wikis, however, is a privilege reserved for premium users, who have paid the $15 upgrade fee.
 
@@ -11,10 +11,11 @@ Botanopedia is an application that allows users to create public and private wik
 
 # Running Locally
 
- Clone the repo. Run:
+Clone the repo. Run:
 
-`$ bundle install
-$ rake db:create
-$ rake db:migrate
-$ rails s`
+    $ bundle install
+    $ rake db:create
+    $ rake db:migrate
+    $ rails s
+
 
