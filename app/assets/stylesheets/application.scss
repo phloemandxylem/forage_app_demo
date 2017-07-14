@@ -18,22 +18,19 @@
 @import "bootstrap-sprockets";
 
 // Import superhero variables.  See http://bootswatch.com/ for details
-@import "bootswatch/spacelab/variables";
+@import "bootswatch/Yeti/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
 
-// Bootstrap body padding for fixed navbar
-body { padding-top: 50px; }
 
-// And finally bootswatch style itself
-@import "bootswatch/spacelab/bootswatch";
+div.container{
+      margin: 20px;
+      padding-top: 5%;
 
-.action {
-  width: 10%;
 }
 
-body.thin .content {
-  max-width: 600px;
-  margin: auto;
+ul {
+      margin: 20px;
+      padding-left: 50%;
 }
