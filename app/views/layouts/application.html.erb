@@ -9,7 +9,7 @@
     </head>
 
     <body class="<%= @body_class %>">
-        <div class="container">
+        <div class="container-pills">
             <% if user_signed_in? %>
                 Signed in as: <strong> <%= "#{current_user.name} - #{current_user.email} (#{current_user.role})" %></strong>
                     <ul class="nav nav-pills pull-right">
