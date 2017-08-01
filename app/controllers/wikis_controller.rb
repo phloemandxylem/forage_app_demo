@@ -20,6 +20,13 @@ class WikisController < ApplicationController
          @wikis = Wiki.visible_to(current_user).ordered.paginate(:page => params[:page], :per_page => 5)
          @personalWikiCount = current_user.wikis.count.to_s
          @PersonalWikiPrivateCount = current_user.wikis.where(private: true).count.to_s
+
+         if params[:search]
+               @wikis = Wiki.search(params[:search]).order("created_at DESC")
+            else
+               @wikis = Wiki.all.order('created_at DESC')
+            end
+         end
        end
 
        def show
@@ -88,4 +95,4 @@ class WikisController < ApplicationController
        def wiki_params
          params.require(:wiki).permit(:title, :body, :private)
        end
-     end
+   

@@ -15,4 +15,6 @@ class Wiki < ActiveRecord::Base
   #   user.admin? ? all : (public_wikis + user.wikis).uniq
   # end
 
-end
+  def self.search(query)
+    where("%#{query}%")
+  end

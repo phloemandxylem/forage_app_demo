@@ -23,6 +23,12 @@
                <li class="btn btn-info"><%= link_to "Sign In", new_user_session_path, :class => 'pull-right'  %> </li>
             </ul>
             <% end %>
+            <div class="search_bar">
+              <%= form_tag(wikis_path, :method => "get", id: "search-form") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search Wikis" %>
+                <%= submit_tag "Search", :name => nil %>
+            </div>
+            <% end %>
 
       <div class="flash">
             <% if flash[:notice] %>
