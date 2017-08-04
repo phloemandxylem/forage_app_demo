@@ -1,5 +1,5 @@
 
-# Botanopedia
+# For Foragers 
 
 Powered by Ruby on Rails 4.2.5 and Bootswatch
 
