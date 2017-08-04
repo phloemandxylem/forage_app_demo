@@ -41,3 +41,4 @@ source 'https://rubygems.org'
  gem 'will_paginate-bootstrap'
  #Add Stripe for credit card processing
  gem 'stripe'
+ gem 'geocoder'
